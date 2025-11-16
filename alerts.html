@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts & News - CityPulse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#4A70A9"/>
+                    <path d="M16 8L8 14V24H12V18H20V24H24V14L16 8Z" fill="#EFECE3"/>
+                </svg>
+                <span>CityPulse</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="alerts.html" class="active">Alerts</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>City Alerts & News</h1>
+            <p class="subtitle">Stay informed about important updates and notifications</p>
+        </header>
+
+        <div class="controls-section">
+            <div class="filter-group">
+                <label>Filter by Category:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="traffic">Traffic</button>
+                    <button class="filter-btn" data-filter="weather">Weather</button>
+                    <button class="filter-btn" data-filter="health">Health</button>
+                    <button class="filter-btn" data-filter="public">Public Notice</button>
+                </div>
+            </div>
+
+            <div class="sort-group">
+                <label>Sort by:</label>
+                <div class="sort-buttons">
+                    <button class="sort-btn active" data-sort="newest">Newest First</button>
+                    <button class="sort-btn" data-sort="oldest">Oldest First</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="alerts-container" id="alerts-container">
+            <!-- Alerts will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 CityPulse. All rights reserved.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

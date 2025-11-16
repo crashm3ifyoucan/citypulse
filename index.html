@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityPulse - Smart City Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#4A70A9"/>
+                    <path d="M16 8L8 14V24H12V18H20V24H24V14L16 8Z" fill="#EFECE3"/>
+                </svg>
+                <span>CityPulse</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>Smart City Dashboard</h1>
+            <p class="subtitle">Real-time monitoring of your city's vital statistics</p>
+        </header>
+
+        <!-- Full Width Time Card -->
+        <div class="hero-time-section">
+            <div class="hero-time-content">
+                <div class="hero-clock" id="hero-time-value">--:--:--</div>
+                <div class="hero-date" id="hero-date-value">Loading...</div>
+            </div>
+            <div class="city-silhouette"></div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card glass-card" id="temperature-card">
+                <div class="card-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 14.76V3.5C14 2.67 13.33 2 12.5 2C11.67 2 11 2.67 11 3.5V14.76C9.77 15.45 9 16.84 9 18.5C9 20.99 11.01 23 13.5 23C15.99 23 18 20.99 18 18.5C18 16.84 17.23 15.45 16 14.76Z" fill="#4A70A9"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Temperature</h3>
+                    <div class="metric-value" id="temp-value">--°C</div>
+                    <div class="metric-label">Current Temperature</div>
+                </div>
+            </div>
+
+            <div class="card glass-card" id="aqi-card">
+                <div class="card-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                        <path d="M14.5 4L16 7L19 8.5L16 10L14.5 13L13 10L10 8.5L13 7L14.5 4Z" fill="#4A70A9"/>
+                        <path d="M8.5 8L9.5 10L11.5 11L9.5 12L8.5 14L7.5 12L5.5 11L7.5 10L8.5 8Z" fill="#8FABD4"/>
+                        <path d="M18.5 14L19.5 16L21.5 17L19.5 18L18.5 20L17.5 18L15.5 17L17.5 16L18.5 14Z" fill="#8FABD4"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Air Quality Index</h3>
+                    <div class="metric-value" id="aqi-value">--</div>
+                    <div class="metric-label" id="aqi-status">Checking...</div>
+                </div>
+            </div>
+
+            <div class="card glass-card" id="traffic-card">
+                <div class="card-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.28 5.42 5.08 6.01L3 12V20C3 20.55 3.45 21 4 21H5C5.55 21 6 20.55 6 20V19H18V20C18 20.55 18.45 21 19 21H20C20.55 21 21 20.55 21 20V12L18.92 6.01ZM6.5 16C5.67 16 5 15.33 5 14.5C5 13.67 5.67 13 6.5 13C7.33 13 8 13.67 8 14.5C8 15.33 7.33 16 6.5 16ZM17.5 16C16.67 16 16 15.33 16 14.5C16 13.67 16.67 13 17.5 13C18.33 13 19 13.67 19 14.5C19 15.33 18.33 16 17.5 16ZM5 11L6.5 6.5H17.5L19 11H5Z" fill="#4A70A9"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Traffic Density</h3>
+                    <div class="metric-value" id="traffic-value">--%</div>
+                    <div class="metric-label" id="traffic-status">Calculating...</div>
+                </div>
+            </div>
+
+            <div class="card glass-card" id="time-card">
+                <div class="card-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z" fill="#4A70A9"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Current Time</h3>
+                    <div class="metric-value" id="time-value">--:--:--</div>
+                    <div class="metric-label" id="date-value">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="stats-section">
+            <h2>City Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-bar" style="--percentage: 75%">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Public Transport Usage</span>
+                        <span class="stat-value">75%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-bar" style="--percentage: 88%">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Energy Consumption</span>
+                        <span class="stat-value">88%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-bar" style="--percentage: 62%">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Water Supply Level</span>
+                        <span class="stat-value">62%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-bar" style="--percentage: 91%">
+                        <div class="stat-fill"></div>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Waste Management</span>
+                        <span class="stat-value">91%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 CityPulse. All rights reserved.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
